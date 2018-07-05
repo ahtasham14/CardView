@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.marozzi.roundbutton.RoundButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +33,7 @@ public class Fragment1 extends Fragment {
     ArrayAdapter arrayAdapter;
     project project;
     ArrayList<Integer>IDprojectList;
+    RoundButton btn;
 
     public Fragment1() {
         projectList = new ArrayList<>();
@@ -43,6 +45,11 @@ public class Fragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fragment1, container, false);
+
+
+
+
+
         listView = view.findViewById(R.id.listView);
         showQueue();
         return  view;

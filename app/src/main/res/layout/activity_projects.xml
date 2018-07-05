@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
@@ -14,15 +14,49 @@ tools:context="com.example.hp.cardview.Projects">
     android:id="@+id/tablayout"
     android:background="@color/colorPrimary"
     android:minHeight="?attr/actionBarSize"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    >
 
 </android.support.design.widget.TabLayout>
 
-<android.support.v4.view.ViewPager
-    android:layout_width="match_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/pager">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tablayout"
+        >
 
-</android.support.v4.view.ViewPager>
+    </android.support.v4.view.ViewPager>
 
-</LinearLayout>
+    <com.marozzi.roundbutton.RoundButton
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+
+        android:layout_width="130dp"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:text="Add Project"
+        app:rb_animation_alpha="false"
+        app:rb_animation_progress_color="@color/colorAccent"
+        app:rb_animation_progress_padding="8dp"
+        app:rb_animation_progress_width="2dp"
+        app:rb_animation_progress_style="circle"
+        app:rb_animation_corner_radius="20dp"
+        app:rb_animation_duration="500"
+        app:rb_background_color="@android:color/transparent"
+        app:rb_success_resource="@drawable/man"
+        app:rb_background_color_pressed="@color/colorPrimary"
+        app:rb_corner_color="@color/colorPrimary"
+        app:rb_corner_color_pressed="@color/colorPrimary"
+        app:rb_corner_radius="2dp"
+        app:rb_corner_width="1dp"
+        app:rb_text_color="@color/colorPrimary"
+        app:rb_text_color_pressed="@android:color/white" />
+
+
+
+
+</RelativeLayout>

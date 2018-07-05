@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.marozzi.roundbutton.RoundButton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,6 +30,7 @@ public class Fragment2 extends Fragment {
     ArrayAdapter arrayAdapter;
     project project;
     ArrayList<Integer>IDprojectList;
+    RoundButton button;
 
     public Fragment2() {
         projectList = new ArrayList<>();
@@ -42,6 +44,7 @@ public class Fragment2 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fragment1, container, false);
         listView = view.findViewById(R.id.listView);
         showCompleted();
+
         return  view;
     }
 
