@@ -45,5 +45,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cv3 = findViewById(R.id.cv3);
+        cv3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), Assest.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }

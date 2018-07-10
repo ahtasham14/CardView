@@ -22,7 +22,8 @@
         <activity android:name=".AllEmployeeInfo" />
         <activity android:name=".Projects" />
         <activity android:name=".showFragment1" />
-        <activity android:name=".addProject"></activity>
+        <activity android:name=".addProject" />
+        <activity android:name=".Assest"></activity>
     </application>
 
 </manifest>
