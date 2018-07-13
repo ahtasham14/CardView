@@ -11,6 +11,13 @@ public class MainActivity extends AppCompatActivity {
     CardView cv;
     CardView cv2;
     CardView cv3;
+    CardView cv4;
+    CardView cv5;
+    CardView cv6;
+    CardView cv7;
+    CardView cv8;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Employee CardView Click Listner
-
-
-
-
 
         cv = (CardView) findViewById(R.id.cv1);
         cv.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +56,27 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Assest.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        cv4 = findViewById(R.id.cv4);
+        cv4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Credentials.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        cv5 = findViewById(R.id.cv5);
+        cv5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), ClientPayment.class);
+                startActivity(intent);
+                finish();
+
             }
         });
 

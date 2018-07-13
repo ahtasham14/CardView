@@ -23,7 +23,10 @@
         <activity android:name=".Projects" />
         <activity android:name=".showFragment1" />
         <activity android:name=".addProject" />
-        <activity android:name=".Assest"></activity>
+        <activity android:name=".Assest" />
+        <activity android:name=".Credentials" />
+        <activity android:name=".ClientPayment" />
+        <activity android:name=".PaymentEmployees"></activity>
     </application>
 
 </manifest>
