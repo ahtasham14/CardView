@@ -1,7 +1,9 @@
 package com.example.hp.cardview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -32,6 +34,16 @@ public class Credentials extends AppCompatActivity {
 
         ArrayList = new ArrayList<>();
         ListView = findViewById(R.id.listC);
+        button = findViewById(R.id.assetButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), addCredentials.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         loadCredentials();
 
     }
@@ -44,18 +56,19 @@ public class Credentials extends AppCompatActivity {
                 public void onResponse(String response) {
                     try {
 
-                        // First Access the Array and then Access the Objects
-                        JSONArray array = new JSONArray(response);
 
-                        //traversing through all the object
-                        JSONObject product = array.getJSONObject(0);
+                            // First Access the Array and then Access the Objects
+                            JSONArray array = new JSONArray(response);
+                        for (int i = 0; i < array.length(); i++) {
+                            //traversing through all the object
+                            JSONObject product = array.getJSONObject(i);
 
-                        //   employee = new Employee();
-                        ArrayList.add(product.getString("account"));
-                        String Password = product.getString("password");
-                        String Account = product.getString("username");
+                            //   employee = new Employee();
+                            ArrayList.add(product.getString("account"));
+                            String Password = product.getString("password");
+                            String Account = product.getString("username");
 
-
+                        }
                         String zero = (String) ArrayList.get(0);
                         System.out.println(zero);
 

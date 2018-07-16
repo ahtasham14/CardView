@@ -1,7 +1,9 @@
 package com.example.hp.cardview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -34,6 +36,17 @@ public class ClientPayment extends AppCompatActivity {
         arrayList = new ArrayList<>();
         listView = findViewById(R.id.listClientPayment);
         loadClientPayment();
+
+        button = findViewById(R.id.clientPayment);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), AddClientPayment.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void loadClientPayment() {
@@ -46,29 +59,21 @@ public class ClientPayment extends AppCompatActivity {
                 try {
                 JSONArray jsonArray = new JSONArray(response);
 
-                    if(jsonArray.length()>0) {
+                        for(int i=0; i<jsonArray.length(); i++) {
+                            JSONObject product = jsonArray.getJSONObject(i);
 
-
-                        // First Access the Array and then Access the Objects
-
-
-                        //traversing through all the object
-                        JSONObject product = jsonArray.getJSONObject(0);
-
-                        //   employee = new Employee();
-                        arrayList.add(product.getString("clientName"));
-                        //String buyDate = product.getString("buyDate");
-                        // String cost = product.getString("cost");
-
+                            //   employee = new Employee();
+                            arrayList.add(product.getString("clientName"));
+                            //String buyDate = product.getString("buyDate");
+                            // String cost = product.getString("cost");
+                        }
 
                         String zero = (String) arrayList.get(0);
                         System.out.println(zero);
 
                         arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
                         listView.setAdapter(arrayAdapter);
-                    }else{
-                        Toast.makeText(getApplicationContext(),"Could not get data from api",Toast.LENGTH_SHORT).show();
-                    }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();

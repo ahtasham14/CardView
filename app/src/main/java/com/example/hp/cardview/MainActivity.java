@@ -80,5 +80,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cv6 = findViewById(R.id.cv6);
+        cv6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), PaymentEmployees.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }

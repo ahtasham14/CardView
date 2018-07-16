@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -47,7 +45,9 @@ public class Assest extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addAssets();
+                Intent intent = new Intent(getApplicationContext(), addAssets.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -61,15 +61,17 @@ public class Assest extends AppCompatActivity {
 
                         // First Access the Array and then Access the Objects
                         JSONArray array = new JSONArray(response);
+                        for (int i = 0; i < array.length(); i++) {
 
-                        //traversing through all the object
-                        JSONObject product = array.getJSONObject(0);
+                            //traversing through all the object
+                            JSONObject product = array.getJSONObject(i);
 
-                        //   employee = new Employee();
-                        arrayList.add(product.getString("Item"));
-                        String buyDate = product.getString("buyDate");
-                        String cost = product.getString("cost");
+                            //   employee = new Employee();
+                            arrayList.add(product.getString("Item"));
 
+                            String buyDate = product.getString("buyDate");
+                            String cost = product.getString("cost");
+                        }
 
                         String zero = (String) arrayList.get(0);
                         System.out.println(zero);
@@ -88,38 +90,7 @@ public class Assest extends AppCompatActivity {
 
                         }
                     });
-
             //adding our stringrequest to queue
             Volley.newRequestQueue(this).add(stringRequest);
         }
-
-    private void addAssets() {
-        //   progressBar.setVisibility(View.VISIBLE);
-        String EditText1 = ed1.getText().toString().trim();
-        String EditText2 = ed2.getText().toString().trim();
-        String EditText3 = ed3.getText().toString().trim();
-
-        String tag_string_req = "add_assets";
-        String url = APIClass.AssetsAddRecord+ "?item="+EditText1+"&buydate="+EditText2+"&cost="+EditText3+"";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                // progressBar.setVisibility(View.GONE);
-                if (response.contains("200")) {
-                    Toast.makeText(getApplicationContext(), "Data Added Succesful in Assets", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Failed to Add Data", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // progressBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "Server Error", Toast.LENGTH_SHORT).show();
-            }
-        });
-        MyApplication.getInstance().addToRequestQueue(stringRequest, tag_string_req);
-
-    }
 }

@@ -24,6 +24,11 @@ public class APIClass {
     // Credentials API
 
     public static String CredentialsShowRecord = ROOT_URL+ "/api/v1/credentials/showData";
+    public static String AddCredentials = ROOT_URL+"/api/v1/credentials/addCredentials";
+
+    public static String AddEmployeePaymet = ROOT_URL+"/api/v1/employeePayment/addEmployeePayment";
     public static String ClientPaymentRecord = ROOT_URL+ "/api/v1/ClientPayment/showData";
+
+    public static String PaymentEmployees = ROOT_URL+"/api/v1/EmployessPayment/showData";
 
 }
