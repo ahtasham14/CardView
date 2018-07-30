@@ -45,6 +45,4 @@ public class Projects extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
     }
-
-
 }

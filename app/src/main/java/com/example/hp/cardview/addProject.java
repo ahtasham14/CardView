@@ -172,7 +172,6 @@ public class addProject extends AppCompatActivity {
                 String tag_string_req = "add_project";
                 String url = APIClass.addProject + "?name=" + projectName + "&platform=" + platform + "&team=" + team + "&starting=" + startingDate + "&ending=" + endingDate + "&funds=" + fund + "&cost=" + cost + "&code=" + codeLink + "&client=" + clientName + "&ptype=" + projectType;
 
-
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

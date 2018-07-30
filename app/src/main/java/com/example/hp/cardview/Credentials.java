@@ -1,11 +1,14 @@
 package com.example.hp.cardview;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -25,6 +28,7 @@ public class Credentials extends AppCompatActivity {
     Button button;
     ArrayList ArrayList;
     ArrayAdapter arrayAdapter;
+    Dialog alertDialog;
 
 
     @Override
@@ -68,7 +72,26 @@ public class Credentials extends AppCompatActivity {
                             String Password = product.getString("password");
                             String Account = product.getString("username");
 
+                            ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                    alertDialog.setContentView(R.layout.custompopup);
+                                    alertDialog.show();
+
+                                    ImageView textView = alertDialog.findViewById(R.id.imageView);
+                                    textView.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+
+                                            alertDialog.dismiss();
+                                        }
+                                    });
+                                }
+                            });
                         }
+
+
                         String zero = (String) ArrayList.get(0);
                         System.out.println(zero);
 

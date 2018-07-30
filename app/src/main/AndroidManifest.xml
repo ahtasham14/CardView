@@ -27,10 +27,12 @@
         <activity android:name=".Credentials" />
         <activity android:name=".ClientPayment" />
         <activity android:name=".PaymentEmployees" />
-        <activity android:name=".addAssets" />
         <activity android:name=".addCredentials" />
         <activity android:name=".addPaymentEmployees" />
-        <activity android:name=".AddClientPayment"></activity>
+        <activity android:name=".AddClientPayment" />
+        <activity android:name=".Notes" />
+        <activity android:name=".addNotes" />
+        <activity android:name=".addAssets"></activity>
     </application>
 
 </manifest>

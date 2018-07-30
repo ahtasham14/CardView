@@ -91,5 +91,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cv7 = findViewById(R.id.cv7);
+        cv7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Notes.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }

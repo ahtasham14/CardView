@@ -41,6 +41,8 @@ public class Assest extends AppCompatActivity {
         button = findViewById(R.id.assetButton);
         loadAssets();
 
+
+
         button = findViewById(R.id.assetButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +62,7 @@ public class Assest extends AppCompatActivity {
                     try {
 
                         // First Access the Array and then Access the Objects
+
                         JSONArray array = new JSONArray(response);
                         for (int i = 0; i < array.length(); i++) {
 
@@ -71,6 +74,8 @@ public class Assest extends AppCompatActivity {
 
                             String buyDate = product.getString("buyDate");
                             String cost = product.getString("cost");
+
+
                         }
 
                         String zero = (String) arrayList.get(0);
