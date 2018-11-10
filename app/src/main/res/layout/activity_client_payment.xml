@@ -15,14 +15,14 @@
 
     <com.marozzi.roundbutton.RoundButton
         android:id="@+id/clientPayment"
-        android:layout_width="130dp"
+        android:layout_width="170dp"
         android:layout_height="38dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="15dp"
         android:layout_marginEnd="19dp"
         android:gravity="center"
-        android:text="Add Assets"
+        android:text="Add Client Payment"
         app:rb_animation_alpha="false"
         app:rb_animation_corner_radius="20dp"
         app:rb_animation_duration="500"

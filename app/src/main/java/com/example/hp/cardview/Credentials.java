@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -29,14 +30,19 @@ public class Credentials extends AppCompatActivity {
     ArrayList ArrayList;
     ArrayAdapter arrayAdapter;
     Dialog alertDialog;
-
+    ArrayList forID;
+//    ArrayList searchID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credentials);
 
+        alertDialog = new Dialog(this);
+
         ArrayList = new ArrayList<>();
+        forID = new ArrayList<>();
+
         ListView = findViewById(R.id.listC);
         button = findViewById(R.id.assetButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -44,14 +50,12 @@ public class Credentials extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), addCredentials.class);
                 startActivity(intent);
-                finish();
             }
         });
 
         loadCredentials();
 
     }
-
         private void loadCredentials() {
 
             String url = APIClass.CredentialsShowRecord;
@@ -60,40 +64,23 @@ public class Credentials extends AppCompatActivity {
                 public void onResponse(String response) {
                     try {
 
-
-                            // First Access the Array and then Access the Objects
                             JSONArray array = new JSONArray(response);
                         for (int i = 0; i < array.length(); i++) {
-                            //traversing through all the object
+
                             JSONObject product = array.getJSONObject(i);
 
-                            //   employee = new Employee();
                             ArrayList.add(product.getString("account"));
-                            String Password = product.getString("password");
-                            String Account = product.getString("username");
+                            forID.add(product.getInt("id"));
 
+                        }
                             ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
+
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                                    alertDialog.setContentView(R.layout.custompopup);
-                                    alertDialog.show();
-
-                                    ImageView textView = alertDialog.findViewById(R.id.imageView);
-                                    textView.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-
-                                            alertDialog.dismiss();
-                                        }
-                                    });
+                                    int id = (int) forID.get(i);
+                                    CredentailsBYID(id);
                                 }
                             });
-                        }
-
-
-                        String zero = (String) ArrayList.get(0);
-                        System.out.println(zero);
 
                         arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,ArrayList);
                         ListView.setAdapter(arrayAdapter);
@@ -110,7 +97,57 @@ public class Credentials extends AppCompatActivity {
                         }
                     });
 
-            //adding our stringrequest to queue
             Volley.newRequestQueue(this).add(stringRequest);
         }
+
+    private void CredentailsBYID(int id) {
+
+        String url = APIClass.SearchByID+"?id="+id;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+
+                    JSONArray array = new JSONArray(response);
+
+                    JSONObject product = array.getJSONObject(0);
+
+                    String username = product.getString("username");
+                    String password = product.getString("password");
+                    String account =  product.getString("account");
+
+                    alertDialog.setContentView(R.layout.custom_layout);
+
+                    TextView textView =   alertDialog.findViewById(R.id.tv1);
+                    TextView textView2 =  alertDialog.findViewById(R.id.tv2);
+                    TextView textView3 =  alertDialog.findViewById(R.id.tv3);
+
+                    textView.setText(username);
+                    textView2.setText(password);
+                    textView3.setText(account);
+
+                    alertDialog.show();
+
+                    ImageView imageView = alertDialog.findViewById(R.id.imageView);
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            alertDialog.dismiss();
+                        }
+                    });
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                });
+
+        Volley.newRequestQueue(this).add(stringRequest);
     }
+}

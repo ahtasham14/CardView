@@ -6,21 +6,52 @@ public class Employee implements Serializable {
 
     private String id;
     private String name;
+    private String title;
     private String startingDate;
-    private String totalPaid;
     private String salary;
+    private String totalPaid;
+    private String mobile;
+    private String email;
     private String note;
 
-    public Employee(String id, String name, String startingDate, String totalPaid, String salary, String note) {
+    public Employee(String id, String name, String title, String startingDate, String totalPaid, String salary, String note, String mobile, String email) {
         this.id = id;
         this.name = name;
         this.startingDate = startingDate;
         this.totalPaid = totalPaid;
         this.salary = salary;
         this.note = note;
+        this.title = title;
+
+        this.mobile = mobile;
+        this.email = email;
     }
 
     public Employee(){}
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getId() {
         return id;
@@ -75,9 +106,12 @@ public class Employee implements Serializable {
         return "Employee{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", startingDate='" + startingDate + '\'' +
-                ", totalPaid='" + totalPaid + '\'' +
                 ", salary='" + salary + '\'' +
+                ", totalPaid='" + totalPaid + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
                 ", note='" + note + '\'' +
                 '}';
     }

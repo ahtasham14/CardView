@@ -110,6 +110,5 @@ public class AddClientPayment extends AppCompatActivity {
                 }
             });
             MyApplication.getInstance().addToRequestQueue(stringRequest, tag_string_req);
-
         }
     }

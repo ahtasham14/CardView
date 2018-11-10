@@ -86,7 +86,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_below="@+id/text_input_layout">
+            android:layout_below="@+id/text_input_layout"
+            tools:ignore="UnknownId">
 
             <EditText
                 android:id="@+id/editText4"
@@ -117,8 +118,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-
-
             >
         <Spinner
             android:layout_marginRight="10dp"
@@ -145,17 +144,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team      "
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="18dp"
             android:textSize="18dp"
             android:id="@+id/tv2" />
 
         <Spinner
 
             android:id="@+id/spinner2"
-            android:layout_width="250dp"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv2">
-            </Spinner>
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="12dp"></Spinner>
     </RelativeLayout>
 
     <RelativeLayout
@@ -176,10 +176,11 @@
         <Spinner
 
             android:id="@+id/spinner3"
-            android:layout_width="250dp"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv3">
-        </Spinner>
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="14dp"></Spinner>
 
 
     </RelativeLayout>

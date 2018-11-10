@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hp.cardview">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -10,14 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".EmployeeActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".EmployeeRecord" />
         <activity android:name=".AllEmployeeInfo" />
         <activity android:name=".Projects" />
@@ -32,7 +31,27 @@
         <activity android:name=".AddClientPayment" />
         <activity android:name=".Notes" />
         <activity android:name=".addNotes" />
-        <activity android:name=".addAssets"></activity>
+        <activity android:name=".addAssets" />
+        <activity android:name=".Employees" />
+        <activity android:name=".splashScreen" />
+        <activity android:name=".addEmployee" />
+        <activity android:name=".Edit_Employee" />
+        <activity android:name=".sampleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".signin" />
+        <activity android:name=".signup" />
+        <activity android:name=".WelcomeScreen" />
+        <activity android:name=".Reminder" />
+        <activity android:name=".sendReminder" />
+        <activity android:name=".attendence" />
+        <activity android:name=".localNotification"></activity>
+        <service android:name=".MyService"/>
+
     </application>
 
 </manifest>

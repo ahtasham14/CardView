@@ -59,7 +59,7 @@ public class PageAdapterFragment extends FragmentPagerAdapter {
                 title =  "COMPLETED";
                 break;
             case 2:
-                title = "ENQUE";
+                title = "ENQUEUE";
                 break;
             default:
                 return null;

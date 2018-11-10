@@ -24,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -33,10 +34,10 @@ public class Notes extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     ListView listView;
     Button button;
-    Dialog alertDialog;
-    ImageView imageView;
-    TextView textView;
 
+    Dialog alertDialog;
+    ArrayList forID;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,39 +48,19 @@ public class Notes extends AppCompatActivity {
         alertDialog = new Dialog(this);
 
         arrayList = new ArrayList<>();
+        forID = new ArrayList<>();
+
         listView = findViewById(R.id.list);
         button = findViewById(R.id.assetButton);
-
-        loadNotes();
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), addNotes.class);
                 startActivity(intent);
-                finish();
             }
         });
 
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                alertDialog.setContentView(R.layout.custompopup);
-                alertDialog.show();
-
-                ImageView textView = alertDialog.findViewById(R.id.imageView);
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        alertDialog.dismiss();
-                    }
-                });
-            }
-        });
-
+        loadNotes();
     }
 
     private void loadNotes() {
@@ -90,21 +71,24 @@ public class Notes extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
 
-
-                    // First Access the Array and then Access the Objects
                     JSONArray array = new JSONArray(response);
                     for (int i = 0; i < array.length(); i++) {
-                        //traversing through all the object
+
                         JSONObject product = array.getJSONObject(i);
 
-                        //   employee = new Employee();
                         arrayList.add(product.getString("noteTitle"));
-                     //   String Password = product.getString("password");
-                      //  String Account = product.getString("username");
-
+                        forID.add(product.getInt("id"));
                     }
-                    String zero = (String) arrayList.get(0);
-                    System.out.println(zero);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            int id = (int) forID.get(i);
+                            NoteBYID(id);
+
+                        }
+                    });
 
                     arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,arrayList);
                     listView.setAdapter(arrayAdapter);
@@ -122,6 +106,56 @@ public class Notes extends AppCompatActivity {
                 });
 
         //adding our stringrequest to queue
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    private void NoteBYID(int id) {
+
+        String url = APIClass.NoteBYID+"?id="+id;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+
+                    JSONArray array = new JSONArray(response);
+                    JSONObject product = array.getJSONObject(0);
+
+                    String employeeName = product.getString("noteTitle");
+                    String note = product.getString("note");
+                    String date = product.getString("date");
+
+                    alertDialog.setContentView(R.layout.custompopup);
+
+                    TextView textView =   alertDialog.findViewById(R.id.tv);
+                    TextView textView1 = alertDialog.findViewById(R.id.date);
+                    TextView textView2 =   alertDialog.findViewById(R.id.tv2);
+
+                    textView.setText(employeeName);
+                    textView2.setText(note);
+                    textView1.setText(date);
+
+                    alertDialog.show();
+
+                    ImageView imageView = alertDialog.findViewById(R.id.imageView);
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            alertDialog.dismiss();
+                        }
+                    });
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                });
+
         Volley.newRequestQueue(this).add(stringRequest);
     }
 }

@@ -255,7 +255,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Payment"/>
+                    android:text="Client Payment"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -293,15 +293,15 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/background_brown"
-                    android:src="@drawable/payment_done"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:src="@drawable/payment_done" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Payment"/>
+                    android:text="Employee Payment"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -377,6 +377,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cv8"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="150dp"
@@ -414,7 +415,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Import Database"
+                    android:text="Reminder"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>

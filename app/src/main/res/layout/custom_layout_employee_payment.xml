@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="265dp"
+    android:layout_height="220dp"
+    android:background="@color/endblue"
+    android:padding="10dp"
+    android:layout_gravity="center"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cross"
+        android:textColor="#FFF"
+        android:textSize="25dp"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/pic1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/person"
+        />
+
+    <TextView
+        android:layout_marginTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv1"
+        android:textSize="18dp"
+        android:textColor="#FFF"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="60dp"
+        android:text="Ahtasham Ul Hassan" />
+
+    <ImageView
+        android:id="@+id/pic2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/date"
+        android:layout_below="@+id/pic1"
+        android:layout_margin="15dp"
+        />
+
+    <TextView
+        android:layout_marginTop="3dp"
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv1"
+        android:layout_alignTop="@+id/pic2"
+        android:text="Ahtasham Ul Hassan"
+        android:textColor="#FFF"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/pic3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/pic1"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/cost" />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv2"
+        android:layout_alignTop="@+id/pic3"
+        android:text="Ahtasham Ul Hassan"
+        android:textColor="#FFF"
+        android:textSize="18dp" />
+
+</RelativeLayout>

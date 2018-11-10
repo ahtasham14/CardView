@@ -1,12 +1,16 @@
 package com.example.hp.cardview;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -28,15 +32,19 @@ public class ClientPayment extends AppCompatActivity {
     ListView listView;
     Button button;
 
+    Dialog alertDialog;
+    ArrayList forID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_payment);
 
         arrayList = new ArrayList<>();
-        listView = findViewById(R.id.listClientPayment);
-        loadClientPayment();
+        alertDialog = new Dialog(this);
+        forID = new ArrayList<>();
 
+        listView = findViewById(R.id.listClientPayment);
         button = findViewById(R.id.clientPayment);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,9 +52,9 @@ public class ClientPayment extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), AddClientPayment.class);
                 startActivity(intent);
-                finish();
             }
         });
+        loadClientPayment();
     }
 
     private void loadClientPayment() {
@@ -60,20 +68,24 @@ public class ClientPayment extends AppCompatActivity {
                 JSONArray jsonArray = new JSONArray(response);
 
                         for(int i=0; i<jsonArray.length(); i++) {
+
                             JSONObject product = jsonArray.getJSONObject(i);
 
-                            //   employee = new Employee();
                             arrayList.add(product.getString("clientName"));
-                            //String buyDate = product.getString("buyDate");
-                            // String cost = product.getString("cost");
+                            forID.add(product.getInt("id"));
                         }
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
 
-                        String zero = (String) arrayList.get(0);
-                        System.out.println(zero);
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                            int id = (int) forID.get(i);
+                            ClientPaymentBYID(id);
+
+                        }
+                    });
                         arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
                         listView.setAdapter(arrayAdapter);
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -83,11 +95,65 @@ public class ClientPayment extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 });
 
-        //adding our stringrequest to queue
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+    private void ClientPaymentBYID(int id) {
+
+        String url = APIClass.ClientPaymentByID+"?id="+id;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+
+                    JSONArray array = new JSONArray(response);
+                    JSONObject product = array.getJSONObject(0);
+
+                    String clientName = product.getString("clientName");
+                    String Project = product.getString("project");
+                    String receivedDate =  product.getString("receivedDate");
+                    String amountReceived = product.getString("amountReceived");
+                    String Milestone = product.getString("milestone");
+
+
+                    alertDialog.setContentView(R.layout.custom_layout_client_payment);
+
+                    TextView textView =   alertDialog.findViewById(R.id.tv1);
+                    TextView textView2 =  alertDialog.findViewById(R.id.tv2);
+                    TextView textView3 =  alertDialog.findViewById(R.id.tv3);
+                    TextView textView4 =  alertDialog.findViewById(R.id.tv4);
+                    TextView textView5 =  alertDialog.findViewById(R.id.tv5);
+
+                    textView.setText(clientName);
+                    textView2.setText(Project);
+                    textView3.setText(receivedDate);
+                    textView4.setText(amountReceived);
+                    textView5.setText(Milestone);
+
+                    alertDialog.show();
+
+                    ImageView imageView = alertDialog.findViewById(R.id.imageView);
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            alertDialog.dismiss();
+                        }
+                    });
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                });
+
         Volley.newRequestQueue(this).add(stringRequest);
     }
 }

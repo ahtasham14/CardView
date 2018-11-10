@@ -38,9 +38,9 @@ public class addCredentials extends AppCompatActivity {
         ed2 = findViewById(R.id.editText2);
         ed3 = findViewById(R.id.editText3);
 
-        String EditText1 = ed1.getText().toString().trim();
-        String EditText2 = ed2.getText().toString().trim();
-        String EditText3 = ed3.getText().toString().trim();
+        final String EditText1 = ed1.getText().toString().trim();
+        final String EditText2 = ed2.getText().toString().trim();
+        final String EditText3 = ed3.getText().toString().trim();
 
         String tag_string_req = "add_credentials";
 
@@ -49,11 +49,15 @@ public class addCredentials extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
-                // progressBar.setVisibility(View.GONE);
-                if (response.contains("200")) {
-                    Toast.makeText(getApplicationContext(), "Data Added Succesful in Assets", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Failed to Add Data", Toast.LENGTH_SHORT).show();
+                if(EditText1.isEmpty() || EditText2.isEmpty() || EditText3.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Make sure all fields are filled", Toast.LENGTH_SHORT).show();
+                }else {
+                    // progressBar.setVisibility(View.GONE);
+                    if (response.contains("200")) {
+                        Toast.makeText(getApplicationContext(), "Data Added Succesful in Assets", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Failed to Add Data", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }, new Response.ErrorListener() {

@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Amount Paid"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
     </RelativeLayout>
@@ -81,7 +81,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="205dp"
         android:gravity="center"
-        android:text="Add Assets"
+        android:text="Add Employee Payment"
         app:rb_animation_alpha="false"
         app:rb_animation_corner_radius="20dp"
         app:rb_animation_duration="500"

@@ -32,8 +32,6 @@ public class Projects extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), addProject.class);
                 startActivity(intent);
-                finish();
-
             }
         });
 
@@ -43,6 +41,5 @@ public class Projects extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
-
     }
 }

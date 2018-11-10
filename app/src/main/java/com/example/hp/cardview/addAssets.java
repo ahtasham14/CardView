@@ -28,12 +28,10 @@ public class addAssets extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_assets2);
 
-
         calendar = Calendar.getInstance();
         final int Day = calendar.get(Calendar.DAY_OF_MONTH);
         final int month = calendar.get(Calendar.MONTH);
         final int year = calendar.get(Calendar.YEAR);
-
 
         ed1 = findViewById(R.id.editText2);
         ed1.setOnClickListener(new View.OnClickListener() {
@@ -54,8 +52,7 @@ public class addAssets extends AppCompatActivity {
             }
         });
 
-
-        button = findViewById(R.id.addButton);
+        button = findViewById(R.id.add_Button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,28 +61,32 @@ public class addAssets extends AppCompatActivity {
         });
     }
     private void AddAssets() {
-        //   progressBar.setVisibility(View.VISIBLE);
 
         ed1 = findViewById(R.id.editText1);
         ed2 = findViewById(R.id.editText2);
         ed3 = findViewById(R.id.editText3);
 
-        String EditText1 = ed1.getText().toString().trim();
-        String EditText2 = ed2.getText().toString().trim();
-        String EditText3 = ed3.getText().toString().trim();
+        final String EditText1 = ed1.getText().toString().trim();
+        final String EditText2 = ed2.getText().toString().trim();
+        final String EditText3 = ed3.getText().toString().trim();
 
-        String tag_string_req = "add_assets";
+        final String tag_string_req = "add_assets";
 
         String url = APIClass.AssetsAddRecord+"?item="+EditText1+"&buydate="+EditText2+"&cost="+EditText3+"";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                // progressBar.setVisibility(View.GONE);
-                if (response.contains("200")) {
-                    Toast.makeText(getApplicationContext(), "Data Added Succesful in Assets", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Failed to Add Data", Toast.LENGTH_SHORT).show();
+                if(EditText1.isEmpty() || EditText2.isEmpty() || EditText3.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Make sure all fields are filled", Toast.LENGTH_SHORT).show();
+                }else {
+
+                    // progressBar.setVisibility(View.GONE);
+                    if (response.contains("200")) {
+                        Toast.makeText(getApplicationContext(), "Data Added Succesful in Assets", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Failed to Add Data", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }, new Response.ErrorListener() {
@@ -97,6 +98,5 @@ public class addAssets extends AppCompatActivity {
             }
         });
         MyApplication.getInstance().addToRequestQueue(stringRequest, tag_string_req);
-
     }
 }

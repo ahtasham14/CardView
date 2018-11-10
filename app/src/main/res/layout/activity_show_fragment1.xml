@@ -15,8 +15,6 @@
             android:background="@drawable/gradientbackground"
             android:orientation="vertical">
 
-
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -183,7 +181,7 @@
                 android:layout_height="50dp"
                 android:layout_width="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/sdate"
+                android:src="@drawable/date_blue"
                 />
 
             <TextView
@@ -208,7 +206,7 @@
                 android:layout_height="50dp"
                 android:layout_width="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/edate"
+                android:src="@drawable/date_blue"
                 />
 
             <TextView

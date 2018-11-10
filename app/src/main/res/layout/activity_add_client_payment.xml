@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Amount Received"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
     </RelativeLayout>
@@ -111,21 +111,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Milestone"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
     </RelativeLayout>
 
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/rl5">
+
     <com.marozzi.roundbutton.RoundButton
+        android:layout_marginTop="15dp"
         android:id="@+id/addClient"
         android:layout_width="130dp"
         android:layout_height="38dp"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="228dp"
         android:gravity="center"
-        android:text="Add Assets"
+        android:text="Add Client Payment"
         app:rb_animation_alpha="false"
         app:rb_animation_corner_radius="20dp"
         app:rb_animation_duration="500"
@@ -143,6 +148,6 @@
         app:rb_text_color="@color/colorPrimary"
         app:rb_text_color_pressed="@android:color/white" />
 
-
+    </RelativeLayout>
 
 </RelativeLayout>

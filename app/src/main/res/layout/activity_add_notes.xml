@@ -21,7 +21,7 @@
                 android:id="@+id/editText1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Asset Name"
+                android:hint="Message Name"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
@@ -33,8 +33,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/rl2"
         android:layout_below="@id/rl1">
-        <android.support.design.widget.TextInputLayout
 
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -44,7 +44,7 @@
                 android:id="@+id/editText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Buy Date"
+                android:hint="Date"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
 
@@ -66,22 +66,21 @@
                 android:id="@+id/editText3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Asset Cost"
+                android:hint="Note"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
     </RelativeLayout>
 
-
     <com.marozzi.roundbutton.RoundButton
         android:id="@+id/addButton"
-        android:layout_width="130dp"
-        android:layout_height="38dp"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="205dp"
         android:gravity="center"
-        android:text="Add Assets"
+        android:text="Add Notes"
         app:rb_animation_alpha="false"
         app:rb_animation_corner_radius="20dp"
         app:rb_animation_duration="500"
